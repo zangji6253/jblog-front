@@ -4,10 +4,8 @@
       <div id="flex">
         <div id="left">
           <div class="left-top">
-            <h1 class="title">标题2</h1>
-            <p class="content">
-              内容
-            </p>
+            <h1 class="title">{{article.title}}</h1>
+            <p class="content">{{article.content}}</p>
           </div>
           <div class="left-bottom">
             <!--<div class="btn-group btn-group-justified">-->
@@ -47,22 +45,36 @@
     name: "index",
     data () {
       return {
-        articles: []
+        articles: [],
+        id: 0,
+        article: Object
       }
     },
-    created() {
-      console.log(this.$route.params.id);
+    updated() {
       let that = this ;//存储this
-      this.axios.get('http://localhost:8080/article/selectAll')
+      this.axios.get('http://localhost:8080/article/'+this.$route.params.id+'/select')
         .then(function (response) {
-          // console.log(response);
-          that.articles = response.data;
-          // console.log(that.articles[0].title);
-          // console.log(response);
+          that.article = response.data;
         })
         .catch(function (error) {
           console.log(error);
         });
+    },
+    created() {
+      // console.log(this.$route.params.id);
+      // this.id = this.$route.params.id;
+      let that = this ;//存储this
+      // let url =
+      // console.log(url);
+      this.axios.get('http://localhost:8080/article/'+this.$route.params.id+'/select')
+        .then(function (response) {
+          that.article = response.data;
+          // console.log(that.article);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
       this.axios.get('http://localhost:8080/article/selectAll')
         .then(function (response) {
           // console.log(response);
