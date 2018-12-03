@@ -48,3 +48,8 @@
     width: 200px;
   }
 </style>
+
+<style lang="stylus" rel="stylesheet/stylus">
+  .container-fluid
+    background #fff
+</style>
