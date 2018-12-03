@@ -27,7 +27,16 @@
 
 <script>
     export default {
-        name: "index"
+        name: "index",
+      created() {
+          this.axios.get('http://localhost:3030/seller')
+            .then(function (response) {
+              console.log(response);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+      }
     }
 </script>
 
