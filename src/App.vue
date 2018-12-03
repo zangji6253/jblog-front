@@ -22,6 +22,10 @@
   }
 </style>
 
+<style  lang="scss">
+  @import '~bootstrap/scss/bootstrap.scss';
+</style>
+
 <style lang="stylus" rel="stylesheet/stylus">
   #app
     margin 0
