@@ -4,8 +4,8 @@
       <div id="flex">
         <div id="left">
           <div class="left-top">
-            <h1>标题2</h1>
-            <p>
+            <h1 class="title">标题2</h1>
+            <p class="content">
               内容
             </p>
           </div>
@@ -23,12 +23,11 @@
         </div>
         <div id="right">
           <div class="right-top">
-            <ul>
-              <li>
-                <a href="">标题1</a>
-              </li>
-              <li>
-                <a href="">标题2</a>
+            <ul  class="list-unstyled">
+              <li v-for="article in articles" >
+                <!--<router-link to="/">{{article.title}}</router-link>-->
+                <router-link :to="{ name: 'article', params: { id: article.id }}">{{article.title}}</router-link>
+                <!--<a :href="'/'+article.id">{{article.title}}</a>-->
               </li>
             </ul>
           </div>
@@ -46,14 +45,35 @@
 <script>
   export default {
     name: "index",
+    data () {
+      return {
+        articles: []
+      }
+    },
     created() {
-      this.axios.get('http://localhost:3030/seller')
+      console.log(this.$route.params.id);
+      let that = this ;//存储this
+      this.axios.get('http://localhost:8080/article/selectAll')
         .then(function (response) {
-          console.log(response);
+          // console.log(response);
+          that.articles = response.data;
+          // console.log(that.articles[0].title);
+          // console.log(response);
         })
         .catch(function (error) {
           console.log(error);
         });
+      this.axios.get('http://localhost:8080/article/selectAll')
+        .then(function (response) {
+          // console.log(response);
+          that.articles = response.data;
+          // console.log(that.articles[0].title);
+          // console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      // console.log(that.router);
     }
   }
 </script>
@@ -98,6 +118,8 @@
 
   #left
     border-right: 1px solid rgba(7, 17, 27, 0.1)
+    .title
+      text-align center
     .left-bottom
       position fixed
       bottom 0
