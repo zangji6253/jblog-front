@@ -142,7 +142,10 @@
   #left
     border-right: 1px solid rgba(7, 17, 27, 0.1)
     .title
+      margin-top 10px
       text-align center
+    .content
+      margin-top 10px
     .left-bottom
       position fixed
       bottom 0
@@ -155,6 +158,9 @@
         margin 0 auto
         text-align center
   #right
+    .right-top
+      margin-top 10px
+      margin-left 10px
     .right-bottom
       position fixed
       bottom 0
