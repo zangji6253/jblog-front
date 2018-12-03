@@ -3,22 +3,40 @@
     <div class="container-fluid">
       <div id="flex">
         <div id="left">
-          <h1>标题2</h1>
-          <p>
-            内容
-          </p>
-          <a href="/edit/1">编辑</a>
+          <div class="left-top">
+            <h1>标题2</h1>
+            <p>
+              内容
+            </p>
+          </div>
+          <div class="left-bottom">
+            <!--<div class="btn-group btn-group-justified">-->
+            <div class="edit">
+              <a href="/edit/1" class="btn btn-outline-primary">编辑</a>
+            </div>
+            <!--<a class="btn  btn-outline-primary" href="#" role="button">Link</a>-->
+              <!--<a class="btn btn-default" href="#" role="button">Link</a>-->
+            <!--</div>-->
+
+            <!--<button class="edit">编辑</button>-->
+          </div>
         </div>
         <div id="right">
-          <a href="/insert">新增</a>
-          <ul>
-            <li>
-              <a href="">标题1</a>
-            </li>
-            <li>
-              <a href="">标题2</a>
-            </li>
-          </ul>
+          <div class="right-top">
+            <ul>
+              <li>
+                <a href="">标题1</a>
+              </li>
+              <li>
+                <a href="">标题2</a>
+              </li>
+            </ul>
+          </div>
+          <div class="right-bottom">
+            <div class="add">
+              <a href="/insert" class="btn btn-outline-primary">新增</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -80,4 +98,28 @@
 
   #left
     border-right: 1px solid rgba(7, 17, 27, 0.1)
+    .left-bottom
+      position fixed
+      bottom 0
+      margin-bottom 20px
+      width 100%
+      margin-right 200px
+      padding-right 200px
+      .edit
+        display block
+        margin 0 auto
+        text-align center
+  #right
+    .right-bottom
+      position fixed
+      bottom 0
+      margin-bottom 20px
+      width 100%
+      .add
+        display block
+        /*margin 0 auto*/
+        text-align center
+        /*padding-left auto*/
+        /*margin-left auto*/
+        width 200px
 </style>
