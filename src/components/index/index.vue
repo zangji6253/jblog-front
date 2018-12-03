@@ -46,27 +46,38 @@
     data () {
       return {
         articles: [],
-        id: 0,
+        id: 1,
         article: Object
       }
     },
     updated() {
+      if(typeof this.$route.params.id !== "undefined"){
+        this.id = this.$route.params.id;
+      }
       let that = this ;//存储this
-      this.axios.get('http://localhost:8080/article/'+this.$route.params.id+'/select')
+      this.axios.get('http://localhost:8080/article/'+this.id+'/select')
         .then(function (response) {
           that.article = response.data;
         })
         .catch(function (error) {
           console.log(error);
         });
+
     },
     created() {
       // console.log(this.$route.params.id);
       // this.id = this.$route.params.id;
+      // console.log(this.id);
       let that = this ;//存储this
+
+      if(typeof this.$route.params.id !== "undefined"){
+        this.id = this.$route.params.id;
+      }
+
+      // console.log((typeof this.$route.params.id == "undefined"));
       // let url =
       // console.log(url);
-      this.axios.get('http://localhost:8080/article/'+this.$route.params.id+'/select')
+      this.axios.get('http://localhost:8080/article/'+this.id+'/select')
         .then(function (response) {
           that.article = response.data;
           // console.log(that.article);
