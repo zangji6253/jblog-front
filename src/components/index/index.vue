@@ -40,7 +40,8 @@
       return {
         articles: [],
         id: 1,
-        article: Object
+        article: Object,
+        datahost: 'http://www.coderxx.com:8080'
       }
     },
     updated() {
@@ -67,7 +68,7 @@
           this.id = this.$route.params.id;
         }
         let that = this;//存储this
-        this.axios.get('http://localhost:8080/article/' + this.id + '/select')
+        this.axios.get(this.datahost + '/article/' + this.id + '/select')
           .then(function (response) {
             that.article = response.data;
           })
@@ -90,7 +91,7 @@
 
       this.article.id = this.id;
 
-      this.axios.get('http://localhost:8080/article/' + this.id + '/select')
+      this.axios.get(this.datahost + '/article/' + this.id + '/select')
         .then(function (response) {
           that.article = response.data;
         })
@@ -98,7 +99,7 @@
           console.log(error);
         });
 
-      this.axios.get('http://localhost:8080/article/selectAll')
+      this.axios.get(this.datahost + '/article/selectAll')
         .then(function (response) {
           that.articles = response.data;
         })

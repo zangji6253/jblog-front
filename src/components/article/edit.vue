@@ -27,7 +27,8 @@
     data() {
       return {
         id: 1,
-        article: Object
+        article: Object,
+        datahost: 'http://www.coderxx.com:8080'
       }
     },
     created() {
@@ -38,7 +39,7 @@
 
         // that.$router.push('/'+that.article .id);
 
-        this.axios.get('http://localhost:8080/article/' + this.id + '/select')
+        this.axios.get(this.datahost + '/article/' + this.id + '/select')
           .then(function (response) {
             that.article = response.data;
             // console.log(that.article);
@@ -56,7 +57,7 @@
       save() {
         if (typeof this.$route.params.id !== "undefined") {
           let that = this;//存储this
-          this.axios.post('http://localhost:8080/article/update/' + this.article.id, {
+          this.axios.post(this.datahost + '/article/update/' + this.article.id, {
             title: this.article.title,
             content: this.article.content
           })
@@ -67,7 +68,7 @@
             });
         } else {
           let that = this;
-          this.axios.post('http://localhost:8080/article/insert/', {
+          this.axios.post(this.datahost + '/article/insert/', {
             title: this.article.title,
             content: this.article.content
           })
