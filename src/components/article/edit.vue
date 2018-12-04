@@ -72,7 +72,7 @@
             content: this.article.content
           })
             .then(function (response) {
-              console.log(response.data);
+              // console.log(response.data);
               that.$router.push('/' + response.data.id);
             })
             .catch(function (error) {
