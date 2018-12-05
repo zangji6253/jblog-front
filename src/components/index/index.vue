@@ -5,7 +5,8 @@
         <div id="left">
           <div class="left-top">
             <h1 class="title">{{article.title}}</h1>
-            <p class="content">{{article.content}}</p>
+            <!--<p class="content">{{article.content}}</p>-->
+            <div class="content" v-html="compiledMarkdown"></div>
           </div>
           <div class="left-bottom">
             <div class="edit">
@@ -34,6 +35,8 @@
 </template>
 
 <script>
+  import marked from 'marked'
+
   export default {
     name: "index",
     data() {
@@ -59,6 +62,14 @@
       // })
 
 
+    },
+    computed:{
+      compiledMarkdown () {
+        if(typeof this.article.content === "undefined"){
+          return '';
+        }
+        return marked(this.article.content, { sanitize: true })
+      }
     },
     watch: {
       '$route'(to, from) {
